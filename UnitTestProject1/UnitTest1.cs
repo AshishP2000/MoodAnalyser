@@ -8,13 +8,14 @@ namespace UnitTestProject1
     public class UnitTest1
     {
         [TestMethod]
-        [DataRow("I am in HAPPY mood","happy")]
-        [DataRow("I am in SAD mood","sad")]
-        [DataRow("I am in ANY mood","hapy")]
-        public void TestMethod1(string msg,string excepted)
+        //[DataRow("I am in HAPPY mood","happy")]
+        //[DataRow("I am in SAD mood","sad")]
+        [DataRow(null)]
+        public void TestMethod1(string msg)
         {
             ///AAA
             //Arrange
+            string excepted = "happy";
             MoodAnalysers moodAnalyser = new MoodAnalysers(msg);
 
             //Act

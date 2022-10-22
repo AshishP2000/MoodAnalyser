@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,9 +20,14 @@ namespace MoodAnalyser
             {
                 if (message == null)
                 {
-                    return "happy";
+                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NULL_MSG, "Mood should not be Null");
                 }
-                else if  (message.ToLower().Contains("sad"))
+                else if (message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.EMPTY_MSG, "Mood should not be Empty");
+                }
+                
+                else if (message.ToLower().Contains("sad"))
                 {
                     return "sad";
                 }
@@ -30,10 +36,17 @@ namespace MoodAnalyser
                     return "happy";
                 }
             }
-            catch
+            catch (NullReferenceException e)
             {
-                return "happy";
+                Console.WriteLine(e.Message);
+                return e.Message;
             }
+            catch (MoodAnalyserCustomException e)
+            {
+                Console.WriteLine(e.Message);
+                return e.Message;
+            }
+            
         }
     }
 }

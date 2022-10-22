@@ -11,10 +11,10 @@ namespace MoodAnalyser
     {
         static void Main(string[] args)
         {
-            //UC-2 Handle Exception if user provides invalid mood
+            //UC-3 Inform user if entered invalid mood
             Console.WriteLine("Welcome to Mood Analyser");
 
-            MoodAnalysers moodAnalyser = new MoodAnalysers(null);
+            MoodAnalysers moodAnalyser = new MoodAnalysers("");
             Console.WriteLine(moodAnalyser.Analyse()); 
 
             Console.ReadLine();
